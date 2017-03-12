@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>Kontomierz Proxy</h1>
+    </div>
+
+    <p class="text-right">Total: <span id="total-top">0</span></p>
+    <p class="text-right">Date: <input type="date" id="date" style="width:200px;"></p>
+    <p class="text-right">
+        Wallet:
+        <select style="width:200px;" name="wallet" id="wallet">
+            {% for wallet in wallets %}
+                <option value="{{ wallet.id }}">{{ wallet.name }}</option>
+            {% endfor %}
+        </select>
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for i in range(1, rowsCount) %}
+            <tr id="row{{ loop.index0 }}">
+                <th scope="row">{{ i }}</th>
+                <td><input type="text" data-provide="typeahead" id="category{{ i }}" class="typeahead" autocomplete="off"></td>
+                <td><input type="text" id="description{{ i }}"/></td>
+                <td><input type="text" id="amount{{ i }}" /></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+    <p class="text-right"><button class="btn btn-default" type="submit" id="submit-btn">Submit</button></p>
+
+
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap3-typeahead.min.js"></script>
+<script src="js/app.js"></script>
+
+
+<script>
+
+    $input.typeahead({
+        source: {{ categoriesJson|json_encode|raw}},
+        autoSelect: true
+    });
+
+</script>
+
+</body>
+</html>
