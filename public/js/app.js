@@ -23,7 +23,7 @@ $('#submit-btn').click(function(){
     requestData.wallet = $('#wallet').val();
     requestData.expenses = [];
 
-    for (i = 1; i <= 5; i++) {
+    for (i = 1; i <= 20; i++) {
 
         var category = $('#category' + i).val();
         var amount = $('#amount' + i).val();
@@ -55,4 +55,19 @@ $('#submit-btn').click(function(){
         }
     });
 
+});
+
+$('#calculate').click(function(){
+   var total = 0;
+
+    $('.amount').each(
+        function(index, el) {
+
+            partial = parseFloat($(el).val());
+            if (partial) {
+                total += partial;
+            }
+        });
+
+    $('#total-top').html(total.toFixed(2));
 });

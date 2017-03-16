@@ -17,7 +17,7 @@ class IndexController
     /** @var Application */
     private $app;
     /** @var int */
-    private $rowsCount = 5;
+    private $rowsCount = 20;
     /** @var KontomierzService */
     private $kontomierzService;
 

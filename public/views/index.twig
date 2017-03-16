@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bootstrap 101 Template</title>
+    <title>Kontomierz proxy</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,14 +52,18 @@
                 <th scope="row">{{ i }}</th>
                 <td><input type="text" data-provide="typeahead" id="category{{ i }}" class="typeahead" autocomplete="off"></td>
                 <td><input type="text" id="description{{ i }}"/></td>
-                <td><input type="text" id="amount{{ i }}" /></td>
+                <td><input type="text" id="amount{{ i }}" class="amount" /></td>
             </tr>
         {% endfor %}
         </tbody>
 
     </table>
 
-    <p class="text-right"><button class="btn btn-default" type="submit" id="submit-btn">Submit</button></p>
+
+    <p class="text-right">
+        <button class="btn btn-default" type="button" id="calculate">Calculate</button>
+        <button class="btn btn-default" type="submit" id="submit-btn">Submit</button>
+    </p>
 
 
 </div>
